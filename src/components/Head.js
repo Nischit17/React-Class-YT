@@ -14,13 +14,13 @@ const Head = () => {
       <div className="flex col-span-1">
         <img
           onClick={() => toggleMenuHandler()}
-          className="h-8 cursor-pointer"
+          className="h-7 cursor-pointer"
           alt="menu"
           src="https://static.vecteezy.com/system/resources/previews/002/292/406/non_2x/hamburger-menu-line-icon-free-vector.jpg"
         />
         <a href="/">
           <img
-            className="h-8 w-90 mx-6"
+            className="h-7 w-90 mx-6"
             alt="yt-logo"
             src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/YouTube_Logo_2017.svg/1280px-YouTube_Logo_2017.svg.png"
           />
