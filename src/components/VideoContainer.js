@@ -1,30 +1,36 @@
-import React, { useEffect, useState } from "react";
-import { YOUTUBE_VIDEOS_API } from "../utils/constants";
-import VideoCard from "./VideoCard";
+import React, { useEffect } from "react";
+import VideoCard, { AdVideoCard } from "./VideoCard";
 import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { getApiDataSlice } from "../utils/getApiDataSlice";
 
 const VideoContainer = () => {
-  const [videos, setVideos] = useState([]);
+  const videoData = useSelector((store) => store.data);
 
-  useEffect(() => {
-    getVideos();
-  }, []);
+  const dispatch = useDispatch();
 
-  const getVideos = async () => {
-    const data = await fetch(YOUTUBE_VIDEOS_API);
-    const json = await data.json();
-    setVideos(json.items);
+  const fetchData = () => {
+    dispatch(getApiDataSlice());
   };
 
-  return (
-    <div className="flex flex-wrap">
-      {videos.map((video) => (
-        <Link to={"/watch?v=" + video.id}>
-          <VideoCard key={video.id} info={video} />
-        </Link>
-      ))}
-    </div>
-  );
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  if (videoData.data) {
+    return (
+      <div className="flex flex-wrap p-3 m-4">
+        {videoData.data.items[0] && (
+          <AdVideoCard info={videoData.data.items[0]} />
+        )}
+        {videoData.data.items.map((video) => (
+          <Link key={video.id} to={"/watch?v=" + video.id}>
+            <VideoCard info={video} />
+          </Link>
+        ))}
+      </div>
+    );
+  }
 };
 
 export default VideoContainer;
