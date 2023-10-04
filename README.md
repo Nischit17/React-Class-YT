@@ -15,9 +15,12 @@
           - Get Data live.
           - Update The UI.
 
+- Data Live
 
-- Data Live - WEB SOCKETS :- It is a two way handshake connection bet.n a server and UI. We can quickly send data from either sides. [NO INTERVAL] - LONG POLLING (OR) API POLLING :- The data flows from server to UI after an INTERVAL.
+  - WEB SOCKETS :- It is a two way handshake connection bet.n a server and UI. We can quickly send data from either sides. [NO INTERVAL]
+  - LONG POLLING (OR) API POLLING :- The data flows from server to UI after an INTERVAL.
 
 - EXAMPLES
+
   - Trading, What's app sites - WEB SOCKETS
   - G-mail, Youtube - API POLLING
